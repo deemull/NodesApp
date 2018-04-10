@@ -201,5 +201,29 @@ public class Main {
             sb.append(temp.value);
             return sb.toString();  // Do you see why we must convert the StringBuilder to a String before returning?
         }
+        public int factorial(int n) {
+            if(n == 1) {
+                return 1;
+            }
+            return n * factorial(n -1);
+        }
+        public int fibonacci(int n) {
+            if (n == 0) {
+                return 0;
+            }
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+        public int sum(int addend1, int addend2) {
+            if (addend2 == 0) {
+                return addend1;
+            }
+            return 1 + sum(addend1, addend2 - 1);
+        }
+        public int exponent(int num1, int num2) {
+            if (num2 == 0) {
+                return num1;
+            }
+            return num1 + exponent(num1, num2 - 1);
+        }
     }
 }
