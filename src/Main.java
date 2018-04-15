@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,6 +10,8 @@ public class Main {
         MyNode n2 = new MyNode(20);
         MyNode n3 = new MyNode(30);
         output3Nodes("n1", n1, "n2", n2, "n3", n3);
+        int factor = n3.factorial(n3.value);
+        System.out.println(factor);
         System.out.println();
 
         System.out.println("\n---- 02 ----");
@@ -16,6 +20,8 @@ public class Main {
         n4.next = n2;
         output3Nodes("n1", n1, "n2", n2, "n3", n3);
         output1Node("n4", n4);
+        int fibNum = n4.fibonacci(n4.value);
+        System.out.println(fibNum);
         System.out.println();
 
         System.out.println("\n---- 03 ----");
@@ -24,6 +30,8 @@ public class Main {
         n5.next = n3;
         output3Nodes("n1", n1, "n2", n2, "n3", n3);
         output2Nodes("n4", n4, "n5", n5);
+        String name = "Derrick";
+        n5.printName(name, 3);
         System.out.println();
 
         System.out.println("\n---- 04 ----");
@@ -31,6 +39,8 @@ public class Main {
         MyNode n6 = n3;
         output3Nodes("n1", n1, "n2", n2, "n3", n3);
         output3Nodes("n4", n4, "n5", n5, "n6", n6);
+        ArrayList<Integer> nodes = new ArrayList<>();
+        n6.length(nodes);
         System.out.println();
 
         System.out.println("\n---- 05 ----");
@@ -41,6 +51,7 @@ public class Main {
         output3Nodes("n4", n4, "n5", n5, "n6", n6);
         System.out.println("Why do you know why n3, n6, and also n5 change when n3 changes?");
         System.out.println();
+
 
         System.out.println("\n---- 06 ----");
         // TODO Change the value of n6 to 66.  n3 should also change but no other nodes should change.
@@ -213,6 +224,18 @@ public class Main {
             }
             return fibonacci(n - 1) + fibonacci(n - 2);
         }
+        public void printName(String word, int n) {
+            if(n == 0) {
+                System.out.println("");
+            }
+            printName("Derrick", 3);
+        }
+        public int length(ArrayList<Integer> list) {
+            if (list.size() == 0) {
+                return 0;
+            }
+            return 1 + length(list);
+        }
         public int sum(int addend1, int addend2) {
             if (addend2 == 0) {
                 return addend1;
@@ -225,5 +248,25 @@ public class Main {
             }
             return num1 + exponent(num1, num2 - 1);
         }
+        public int countString(String str, char c) {
+            int count = 0;
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) == c) {
+                    count++;
+                    str = str.substring (0, i) + str.substring (i + 1);
+                }
+            }
+            return count + countString(str, c);
+
+        }
+        public ArrayList<Integer> reverse(ArrayList<Integer> ints) {
+            if (ints.size() == 0) {
+                return ints;
+            }
+            ints.remove(ints.get(0));
+            ints = reverse(ints);
+            return ints;
+        }
+
     }
 }
